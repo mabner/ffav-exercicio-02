@@ -1,28 +1,41 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <UserForm :onAddUser="handleOnAddUser" />
+
+    <div>
+      <ul>
+        <li v-for="user in users" :key="user.name">
+          {{ user.name }} | {{ user.email }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import UserForm from './components/UserForm.vue';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  components: { UserForm },
+  data() {
+    return {
+      users: [
+        {
+          name: "Samuel Martins",
+          email: "a@a.com",
+        },
+        {
+          name: "Jeff Bezos",
+          email: "b@b.com",
+        },
+      ],
+    };
+  },
+  methods: {
+    handleOnAddUser(user) {
+      console.log(user);
+      this.users = this.users.concat(user);
+    },
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
