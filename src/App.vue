@@ -1,11 +1,11 @@
 <template>
   <div>
-    <UserForm :onAddUser="handleOnAddUser" />
+    <ProductForm :onAddProduct="handleOnAddProduct"/>
 
     <div>
       <ul>
-        <li v-for="user in users" :key="user.name">
-          {{ user.name }} | {{ user.email }}
+        <li v-for="product in products" :key="product.name">
+          {{ product.name }} | {{ product.price }} | {{ product.category }}
         </li>
       </ul>
     </div>
@@ -13,28 +13,25 @@
 </template>
 
 <script>
-import UserForm from './components/UserForm.vue';
+import ProductForm from './components/ProductForm';
 
 export default {
-  components: { UserForm },
+  components: { ProductForm },
   data() {
     return {
-      users: [
+      products: [
         {
-          name: "Samuel Martins",
-          email: "a@a.com",
-        },
-        {
-          name: "Jeff Bezos",
-          email: "b@b.com",
+          name: "Base Triskle 3x110",
+          price: "299.00",
+          category: "Bases",
         },
       ],
     };
   },
   methods: {
-    handleOnAddUser(user) {
-      console.log(user);
-      this.users = this.users.concat(user);
+    handleOnAddProduct(product) {
+      console.log(product);
+      this.products = this.products.concat(product);
     },
   },
 };
