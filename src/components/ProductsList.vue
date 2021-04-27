@@ -7,6 +7,7 @@
 					<ProductItem :product="product" />
 				</li>
 			</ul>
+			{{ totalProducts }}
 		</div>
 	</div>
 </template>
@@ -21,6 +22,14 @@
 		},
 		components: {
 			ProductItem,
+		},
+		computed: {
+			totalProducts() {
+				const totalProd = this.products.length;
+				return totalProd > 1
+					? `${totalProd} items found.`
+					: `${totalProd} item found.`;
+			},
 		},
 	};
 </script>
