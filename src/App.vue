@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Header pageHeader="Product List"/>
     <div>
       <ProductForm :onAddProduct="handleOnAddProduct"/>
     </div>
@@ -13,13 +14,14 @@
 </template>
 
 <script>
+import Header from './components/Header';
 import ProductForm from './components/ProductForm';
 import ProductsList from './components/ProductsList';
 import SearchBar from './components/SearchBar';
 
 export default {
   name: 'App',
-  components: {ProductForm, ProductsList, SearchBar},
+  components: {Header, ProductForm, ProductsList, SearchBar},
   data() {
     return {
       products: [
