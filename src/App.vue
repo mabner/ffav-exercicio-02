@@ -6,16 +6,20 @@
 		<div>
 			<ProductsList :products="products" />
 		</div>
+		<div>
+			<SearchBar :onSearch="handleSearchProducts" />
+		</div>
 	</div>
 </template>
 
 <script>
 	import ProductForm from './components/ProductForm';
 	import ProductsList from './components/ProductsList';
+	import SearchBar from './components/SearchBar';
 
 	export default {
 		name: 'App',
-		components: { ProductForm, ProductsList },
+		components: { ProductForm, ProductsList, SearchBar },
 		data() {
 			return {
 				products: [
@@ -35,12 +39,23 @@
 						productCategory: 'Proteções',
 					},
 				],
+				listedProducts: [],
 			};
 		},
 		methods: {
 			handleOnAddProduct(product) {
 				// console.log(product);
 				this.products = this.products.concat(product);
+			},
+			handleSearchProducts(name) {
+				const results = this.products.filter((prod) =>
+					prod.name.startsWith(name)
+				);
+				if (results.length > 0) {
+					this.listedProducts = results;
+				} else {
+					this.listedProducts = this.products;
+				}
 			},
 		},
 	};
