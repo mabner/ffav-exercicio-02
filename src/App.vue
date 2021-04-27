@@ -22,7 +22,7 @@ export default {
       products: [
         {
           name: "Base Triskle 3x110",
-          price: "299.00",
+          price: "499.00",
           category: "Bases",
         },
       ],

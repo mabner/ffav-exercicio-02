@@ -1,16 +1,18 @@
 <template>
   <div>
     <form @submit.prevent="onFormSubmit">
+      <div>
       <p>
-        <label>Nome: </label>
+        <label for="productName">Nome: </label>
         <input type="text" v-model="productName" />
       </p>
+      </div>
       <p>
-        <label>Preço: </label>
+        <label for="productPrice">Preço: </label>
         <input type="text" v-model="productPrice" />
       </p>
       <p>
-        <label>Categoria: </label>
+        <label for="productCategory">Categoria: </label>
         <input type="text" v-model="productCategory" />
       </p>
       <button type="submit">Enviar</button>
@@ -37,7 +39,7 @@ export default {
       const product = {
         name: `${this.productName}`,
         price: `${this.productPrice}`,
-        category: this.productCategory,
+        category: `${this.productCategory}`,
       };
 
       this.onAddProduct(product);
