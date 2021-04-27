@@ -4,7 +4,7 @@
       <ProductForm :onAddProduct="handleOnAddProduct"/>
     </div>
     <div>
-      <ProductsList :products="products"/>
+      <ProductsList :products="listedProducts.length > 0 ? listedProducts : products"/>
     </div>
     <div>
       <SearchBar :onSearch="handleSearchProducts"/>
@@ -49,8 +49,7 @@ export default {
     },
     handleSearchProducts(productName) {
       const results = this.products.filter((prod) =>
-          prod.productName.startsWith(productName),
-      );
+          prod.productName.startsWith(productName));
       if (results.length > 0) {
         this.listedProducts = results;
       } else {
