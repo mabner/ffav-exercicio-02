@@ -7,19 +7,19 @@
 
 <script>
 	export default {
-		name: 'SearchBar',
-		props: {
-            onSearch: Function,
-        },
-		data() {
-            return {
-                search: "",
-            };
-        },
-		methods: {
-            handleSearch() {
-                this.onSearch(this.search);
-            }
-        },
-	};
+    name: 'SearchBar',
+    props: {
+      onSearch: Function,
+    },
+    data() {
+      return {
+        search: '',
+      };
+    },
+    methods: {
+      handleSearch() {
+        this.onSearch(this.search);
+      },
+    },
+  };
 </script>
