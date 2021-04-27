@@ -1,38 +1,47 @@
 <template>
-  <div>
-    <ProductForm :onAddProduct="handleOnAddProduct"/>
-
-    <div>
-      <ul>
-        <li v-for="product in products" :key="product.name">
-          {{ product.name }} | {{ product.price }} | {{ product.category }}
-        </li>
-      </ul>
-    </div>
-  </div>
+	<div id="app">
+		<div>
+			<ProductForm :onAddProduct="handleOnAddProduct" />
+		</div>
+		<div>
+			<ProductsList :products="products" />
+		</div>
+	</div>
 </template>
 
 <script>
-import ProductForm from './components/ProductForm';
+	import ProductForm from './components/ProductForm';
+	import ProductsList from './components/ProductsList';
 
-export default {
-  components: { ProductForm },
-  data() {
-    return {
-      products: [
-        {
-          name: "Base Triskle 3x110",
-          price: "499.00",
-          category: "Bases",
-        },
-      ],
-    };
-  },
-  methods: {
-    handleOnAddProduct(product) {
-      console.log(product);
-      this.products = this.products.concat(product);
-    },
-  },
-};
+	export default {
+		name: 'App',
+		components: { ProductForm, ProductsList },
+		data() {
+			return {
+				products: [
+					{
+						productName: 'Base Triskle 3x110 completa',
+						productPrice: '499,00',
+						productCategory: 'Bases',
+					},
+					{
+						productName: 'Mochila Traxart Wild',
+						productPrice: '250,00',
+						productCategory: 'Mochilas',
+					},
+					{
+						productName: 'Kit de Proteção Traxart DG 300',
+						productPrice: '279,00',
+						productCategory: 'Proteções',
+					},
+				],
+			};
+		},
+		methods: {
+			handleOnAddProduct(product) {
+				// console.log(product);
+				this.products = this.products.concat(product);
+			},
+		},
+	};
 </script>
