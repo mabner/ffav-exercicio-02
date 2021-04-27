@@ -16,7 +16,7 @@
         <label for="productCategory">Categoria: </label>
         <input id="productCategory" v-model="productCategory" type="text"/>
       </p>
-      <button type="submit">Enviar</button>
+      <button :disabled="disabled" type="submit">Enviar</button>
     </form>
     <p>{{ productName }}<br/>{{ productPrice }}<br/>{{ productCategory }}<br/></p>
   </div>
@@ -31,6 +31,7 @@ export default {
       productPrice: '',
       productCategory: '',
       isNameLimitExceeded: '',
+      disabled: false,
     };
   },
   props: {
@@ -51,10 +52,12 @@ export default {
     productName() {
       if (this.productName.length > 15) {
         this.isNameLimitExceeded = 'O nome do produto não pode ultrapassar os 15 caracteres';
+        this.disabled = true;
       } else {
         this.isNameLimitExceeded = '';
       }
     },
   },
+  // computed
 };
 </script>
