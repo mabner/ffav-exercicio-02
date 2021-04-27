@@ -1,5 +1,6 @@
 <template>
   <div>
+    <span>{{ isNameLimitExceeded }}</span>
     <form v-on:submit.prevent="onFormSubmit">
       <div>
         <p>
@@ -17,7 +18,7 @@
       </p>
       <button type="submit">Enviar</button>
     </form>
-    <p>{{ productName }} {{ productPrice }} {{ productCategory }}</p>
+    <p>{{ productName }}<br/>{{ productPrice }}<br/>{{ productCategory }}<br/></p>
   </div>
 </template>
 
@@ -49,8 +50,7 @@ export default {
   watch: {
     productName() {
       if (this.productName.length > 15) {
-        this.isNameLimitExceeded = 'O nome\n' +
-            'do produto não pode ultrapassar os 15 caracteres';
+        this.isNameLimitExceeded = 'O nome do produto não pode ultrapassar os 15 caracteres';
       } else {
         this.isNameLimitExceeded = '';
       }
