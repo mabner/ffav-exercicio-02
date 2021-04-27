@@ -55,6 +55,7 @@ export default {
         this.disabled = true;
       } else {
         this.isNameLimitExceeded = '';
+        this.disabled = false;
       }
     },
   },
